@@ -25,4 +25,5 @@ jobs:
 
       - name: ✅ Chạy test với pytest
         run: |
+          export PYTHONPATH=.
           pytest
