@@ -1,0 +1,28 @@
+name: Python CI
+
+on:
+  push:
+    branches:
+      - main   # Kích hoạt khi push lên nhánh main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Lấy mã nguồn
+        uses: actions/checkout@v3
+
+      - name: 🐍 Cài đặt Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: 📦 Cài đặt thư viện
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: ✅ Chạy test với pytest
+        run: |
+          pytest
